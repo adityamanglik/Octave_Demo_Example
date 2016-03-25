@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 //Levenshtein Distance calculation function
-unsigned int L_dist(const std::string& s1,std::string& s2)
+unsigned int L_dist(const std::string& s1,const std::string& s2)
 {
 	const std::size_t len1 = s1.size(), len2 = s2.size();
 	unsigned int arr[len1 + 1][len2 + 1];
@@ -12,7 +12,7 @@ unsigned int L_dist(const std::string& s1,std::string& s2)
 	for(i = 1; i <= len1; ++i)
 		for(j = 1; j <= len2; ++j)
                      arr[i][j] = std::min(std::min(arr[i - 1][j] + 1, arr[i][j - 1] + 1), arr[i - 1][j - 1] + (s1[i - 1] == s2[j - 1] ? 0 : 1));
-	return arr[len1][len2];
+	return arr[len1][len2];//Returns Levenshtein Distance value for the two strings passed as parameters
 }
 //MAIN FUNCTION
 int main()
